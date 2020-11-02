@@ -25,7 +25,7 @@ namespace BLL.Services
             repos.Delete(repos.Find(id));
         }
 
-        public ICollection<tblCareer> GetAllCarrer()
+        public List<tblCareer> GetAllCarrer()
         {
             return repos.GetAll().ToList();
         }

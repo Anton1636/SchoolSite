@@ -5,7 +5,7 @@ namespace BLL.Services.Abstraction
 {
     public interface ICarrerService
     {
-        ICollection<tblCareer> GetAllCarrer();
+        List<tblCareer> GetAllCarrer();
         void AddCarrer(tblCareer career);
         tblCareer GetCarrer(int id);
         void Delete(int id);

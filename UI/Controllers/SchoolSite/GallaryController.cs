@@ -29,7 +29,6 @@ namespace UI.Controllers.SchoolSite
             return View();
         }
 
-        // GET: News
         public ActionResult Index()
         {
             List<tblGallary> gallary = gallaryService.GetAllGallary().ToList();

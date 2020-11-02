@@ -14,27 +14,23 @@ namespace UI.Controllers.SchoolSite
         private readonly ICarrerService careerService;
         private readonly IMapper mapper;
 
-        public CareerController()
-        {
-
-        }
-
         public CareerController(ICarrerService service, IMapper _mapper)
         {
             careerService = service;
             mapper = _mapper;
         }
 
-        public ActionResult Home()
+        public CareerController()
         {
-            return View();
+
         }
 
-        // GET: News
         public ActionResult Index()
         {
-            List<tblCareer> news = careerService.GetAllCarrer().ToList();
-            var careerViewModel = mapper.Map<ICollection<CareerViewModel>>(news);
+            List<tblCareer> news = careerService.GetAllCarrer();
+            var careerViewModel = new List<CareerViewModel>();
+                /*mapper.Map<ICollection<CareerViewModel>>(news)*/
+
             return View(careerViewModel);
         }
 

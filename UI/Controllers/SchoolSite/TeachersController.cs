@@ -29,11 +29,11 @@ namespace UI.Controllers.SchoolSite
             return View();
         }
 
-        // GET: News
         public ActionResult Index()
         {
             List<tblTeachers> teachers = teachersService.GetAllTeachers().ToList();
             var teachersViewModel = mapper.Map<ICollection<TeachersViewModel>>(teachers);
+
             return View(teachersViewModel);
         }
 
