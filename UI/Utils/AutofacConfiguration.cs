@@ -5,13 +5,10 @@ using BLL.Services;
 using BLL.Services.Abstraction;
 using DAL.Abstraction;
 using DAL.Implementation;
-using Google;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using DAL.Services.Abstraction;
+using DAL;
 
 namespace UI.Utils
 {
@@ -30,10 +27,14 @@ namespace UI.Utils
             // 2.
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             //3.
-            builder.RegisterType<ApplicationContext>().As<DbContext>().SingleInstance();
+            //builder.RegisterType<DAL.>().As<DbContext>().SingleInstance();
             builder.RegisterGeneric(typeof(EFrepository<>)).As(typeof(IGenericRepository<>));
             builder.RegisterType<CareerService>().As<ICarrerService>();
             builder.RegisterType<GallaryService>().As<IGallaryService>();
+            builder.RegisterType<NewsService>().As<INewsService>();
+            builder.RegisterType<ScheduleService>().As<IScheduleService>();
+            builder.RegisterType<ScoolPartyService>().As<ISchoolPartyService>();
+            builder.RegisterType<TeachersService>().As<ITeachersService>();
 
             // Register Mapper
             var mapperConfig = new MapperConfiguration(x => x.AddProfile(new MapperConfig()));

@@ -1,9 +1,5 @@
 ﻿using AutoMapper;
 using DAL.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using UI.Models;
 
 namespace UI.Utils
@@ -13,11 +9,22 @@ namespace UI.Utils
         public MapperConfig()
         {
             CreateMap<tblCareer, CareerViewModel>();
+            CreateMap<CareerViewModel, tblCareer > ();
+
             CreateMap<tblGallary, GallaryViewModel>();
+            CreateMap<GallaryViewModel, tblGallary>();
+
             CreateMap<tblNews, NewsViewModel>();
+            CreateMap<NewsViewModel, tblNews>();
+
             CreateMap<tblSchedule, ScheduleViewModel>();
+            CreateMap<ScheduleViewModel, tblSchedule>();
+
             CreateMap<tblSchoolParty, SchoolPartyViewModel>();
+            CreateMap<SchoolPartyViewModel, tblSchoolParty>();
+
             CreateMap<tblTeachers, TeachersViewModel>();
+            CreateMap<TeachersViewModel, tblTeachers>();
         }
     }
 }

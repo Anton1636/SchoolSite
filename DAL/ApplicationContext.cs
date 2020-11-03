@@ -1,16 +1,11 @@
 ﻿using DAL.Entity;
 using DAL.Initializer;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
-    class ApplicationContext : IdentityDbContext<IdentityUser>
+    public class ApplicationContext : IdentityDbContext<IdentityUser>
     {
         public DbSet<tblCareer> Career { get; set; }
         public DbSet<tblGallary> Gallary { get; set; }
@@ -24,6 +19,5 @@ namespace DAL
         {
             Database.SetInitializer(new SchoolSiteInitializer());
         }
-       
     }
 }

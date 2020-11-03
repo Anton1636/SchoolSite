@@ -24,9 +24,9 @@ namespace UI.Controllers.SchoolSite
             mapper = _mapper;
         }
 
-        public ActionResult Home()
+        public GallaryController()
         {
-            return View();
+
         }
 
         public ActionResult Index()
