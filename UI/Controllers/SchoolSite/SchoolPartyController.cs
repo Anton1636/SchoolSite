@@ -24,15 +24,16 @@ namespace UI.Controllers.SchoolSite
             mapper = _mapper;
         }
 
-        public ActionResult Home()
+        public SchoolPartyController()
         {
-            return View();
+
         }
 
         public ActionResult Index()
         {
             List<tblSchoolParty> sp = schoolPartyService.GetAllSchoolParty().ToList();
             var schoolPartyViewModel = mapper.Map<ICollection<SchoolPartyViewModel>>(sp);
+
             return View(schoolPartyViewModel);
         }
 

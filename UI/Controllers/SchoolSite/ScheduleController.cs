@@ -20,12 +20,11 @@ namespace UI.Controllers.SchoolSite
             mapper = _mapper;
         }
 
-        public ActionResult Home()
+        public ScheduleController()
         {
-            return View();
+
         }
 
-        // GET: News
         public ActionResult Index()
         {
             List<tblSchedule> schedule = scheduleService.GetAllSchedule().ToList();

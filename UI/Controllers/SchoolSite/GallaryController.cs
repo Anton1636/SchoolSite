@@ -33,6 +33,7 @@ namespace UI.Controllers.SchoolSite
         {
             List<tblGallary> gallary = gallaryService.GetAllGallary().ToList();
             var gallaryViewModel = mapper.Map<ICollection<GallaryViewModel>>(gallary);
+
             return View(gallaryViewModel);
         }
 

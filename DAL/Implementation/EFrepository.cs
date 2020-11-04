@@ -1,5 +1,4 @@
 ﻿using DAL.Abstraction;
-using DAL.Context;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
@@ -12,7 +11,7 @@ namespace DAL.Implementation
         private readonly DbContext context;
         private readonly DbSet<TEntity> set;
 
-        public EFrepository(EFContext _context)
+        public EFrepository(DbContext _context)
         {
             context = _context;
             set = context.Set<TEntity>();

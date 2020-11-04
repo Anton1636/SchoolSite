@@ -15,7 +15,7 @@ namespace DAL
         public DbSet<tblTeachers> Teachers { get; set; }
 
         public ApplicationContext()
-            : base("name=SchoolSiteConnectionString")
+            : base("name=ConnectionString")
         {
             Database.SetInitializer(new SchoolSiteInitializer());
         }

@@ -24,16 +24,16 @@ namespace UI.Controllers
             mapper = _mapper;
         }
 
-        public ActionResult Home()
+        public NewsController()
         {
-            return View();
+
         }
 
-        // GET: News
         public ActionResult Index()
         {
             List<tblNews> news = newsService.GetAllNews().ToList();
             var newsViewModel = mapper.Map<ICollection<NewsViewModel>>(news);
+
             return View(newsViewModel);
         }
 

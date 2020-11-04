@@ -27,9 +27,8 @@ namespace UI.Controllers.SchoolSite
 
         public ActionResult Index()
         {
-            List<tblCareer> news = careerService.GetAllCarrer();
-            var careerViewModel = new List<CareerViewModel>();
-                /*mapper.Map<ICollection<CareerViewModel>>(news)*/
+            List<tblCareer> career = careerService.GetAllCarrer();
+            var careerViewModel = mapper.Map<ICollection<CareerViewModel>>(career);
 
             return View(careerViewModel);
         }
