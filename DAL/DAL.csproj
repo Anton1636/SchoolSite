@@ -117,6 +117,7 @@
     <Compile Include="Entity\Schedule.cs" />
     <Compile Include="Entity\SchoolParty.cs" />
     <Compile Include="Entity\Teachers.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Implementation\EFrepository.cs" />
     <Compile Include="Initializer\SchoolSiteInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

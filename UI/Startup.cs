@@ -28,7 +28,6 @@ namespace UI
             //{
             //    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
             //    LoginPath = new PathString("/Auth/Login")
-
             //});
 
 

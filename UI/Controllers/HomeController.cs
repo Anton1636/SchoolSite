@@ -13,6 +13,7 @@ namespace UI.Controllers
             return View();
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

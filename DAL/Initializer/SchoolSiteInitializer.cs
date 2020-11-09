@@ -1,15 +1,10 @@
 ﻿using DAL.Entity;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Validation;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL.Initializer
 {
-    class SchoolSiteInitializer : DropCreateDatabaseAlways<ApplicationContext>
+    public class SchoolSiteInitializer : DropCreateDatabaseAlways<ApplicationContext>
     {
         protected override void Seed(ApplicationContext _context)
         {
@@ -68,6 +63,14 @@ namespace DAL.Initializer
                 new tblTeachers { FullName = "Danilo Igorovich Teslenko", Description = "BLAST Pro Series — Copenhagen 2018; ESL One Cologne 2018; CS:GO Asia Championships 2018; StarSeries i-League Season 5;", ImageLink = "https://svirtus.cdnvideo.ru/TO6LLhKrYD5TF1EEtKwSR0l1QOw=/0x0:400x417/800x0/filters:quality(100)/https://hb.bizmrg.com/cybersportru-media/c8/c8f09618501bae37467478f081f7a5b7.png?m=cde4fa8968828595b175329eb3c0c8ff"},
                 new tblTeachers { FullName = "John 'Edward' Sukharev", Description = "WESG 2017 Europe Finals; ESL One New York 2016; SLTV StarSeries IX;", ImageLink = "https://svirtus.cdnvideo.ru/T35Gk59v_4RVGdT1xdm4m7LzIEg=/0x0:226x245/200x200/filters:quality(100)/https://hb.bizmrg.com/esports-core-media/27/27a0bbd1b2cda0164a1da43593d38055.jpg?m=946fc4d57657c9bca49fb18ac9b78875"},
             };
+
+            _context.Roless.Add(new Role { Id = 1, Name = "admin" });
+            _context.Roless.Add(new Role { Id = 2, Name = "manager" });
+            _context.Roless.Add(new Role { Id = 2, Name = "user" });
+
+            _context.Userr.Add(new User { Id = 1, Name = "Ivan", Password = "Qwerty1.", RoleId = 1 });
+            _context.Userr.Add(new User { Id = 2, Name = "Vlad", Password = "Qwerty1.", RoleId = 2 });
+            _context.Userr.Add(new User { Id = 3, Name = "Bob", Password = "Qwerty1.", ClassNumber = 11, RoleId = 3 });
 
             _context.Teachers.AddRange(teachers);
             _context.SchoolParty.AddRange(schoolParty);
