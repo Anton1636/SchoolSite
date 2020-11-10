@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 using UI.Models;
+using UI.Utils;
 
 namespace UI.Controllers.SchoolSite
 {
@@ -40,6 +41,7 @@ namespace UI.Controllers.SchoolSite
 
 
         [HttpPost]
+        [Authorize(Roles = CustomRoles.Admin)]
         public ActionResult Create(NewsViewModel model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
@@ -57,11 +59,12 @@ namespace UI.Controllers.SchoolSite
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var news = careerService.GetCarrer(id);
-            return View(mapper.Map<NewsViewModel>(news));
+            var career = careerService.GetCarrer(id);
+            return View(mapper.Map<NewsViewModel>(career));
         }
 
         [HttpPost]
+        [Authorize(Roles = CustomRoles.Manager)]
         public ActionResult Edit(CareerViewModel model)
         {
             if (ModelState.IsValid)
@@ -74,6 +77,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpPost]
+        [Authorize(Roles = CustomRoles.Manager)]
         public ActionResult Delete(int id)
         {
             var filePath = Server.MapPath("~/Content/img/" + careerService.GetCarrer(id));

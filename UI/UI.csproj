@@ -229,6 +229,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011101641144_SchoolSite.cs" />
+    <Compile Include="Migrations\202011101641144_SchoolSite.Designer.cs">
+      <DependentUpon>202011101641144_SchoolSite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CareerViewModel.cs" />
     <Compile Include="Models\GallaryViewModel.cs" />
@@ -240,6 +245,7 @@
     <Compile Include="Models\TeachersViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\CustomRoles.cs" />
     <Compile Include="Utils\MapperConfig.cs" />
     <Compile Include="Utils\CustomRoleProvider.cs" />
   </ItemGroup>
@@ -346,6 +352,11 @@
       <Project>{187BF53B-0F9D-43AD-B009-8B287B79A3A9}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011101641144_SchoolSite.resx">
+      <DependentUpon>202011101641144_SchoolSite.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
