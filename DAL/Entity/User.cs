@@ -1,4 +1,6 @@
-﻿namespace DAL.Entity
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace DAL.Entity
 {
     public class User
     {
@@ -6,9 +8,12 @@
         public string Name { get; set; }
         public string Password { get; set; }
         public int ClassNumber { get; set; }
+        public string Email { get; set; }
 
         public int RoleId { get; set; }
-        public Role Role { get; set; }
+
+        [ForeignKey("RoleId")]
+        public virtual Role Role { get; set; }
     }
 
     public class Role

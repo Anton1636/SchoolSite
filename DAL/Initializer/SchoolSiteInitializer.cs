@@ -68,9 +68,9 @@ namespace DAL.Initializer
             _context.Roless.Add(new Role { Id = 2, Name = "manager" });
             _context.Roless.Add(new Role { Id = 2, Name = "user" });
 
-            _context.Userr.Add(new User { Id = 1, Name = "Ivan", Password = "Qwerty1.", RoleId = 1 });
-            _context.Userr.Add(new User { Id = 2, Name = "Vlad", Password = "Qwerty1.", RoleId = 2 });
-            _context.Userr.Add(new User { Id = 3, Name = "Bob", Password = "Qwerty1.", ClassNumber = 11, RoleId = 3 });
+            _context.Userr.Add(new User { Id = 1, Name = "Ivan", Email = "ivan@mail.ru", Password = "Qwerty1.", RoleId = 1 });
+            _context.Userr.Add(new User { Id = 2, Name = "Vlad", Email = "vlad@mail.ru", Password = "Qwerty1.", RoleId = 2 });
+            _context.Userr.Add(new User { Id = 3, Name = "Bob", Email = "bob@mail.ru", Password = "Qwerty1.", ClassNumber = 11, RoleId = 3 });
 
             _context.Teachers.AddRange(teachers);
             _context.SchoolParty.AddRange(schoolParty);

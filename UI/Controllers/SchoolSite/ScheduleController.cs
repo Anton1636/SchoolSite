@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UI.Models;
+using UI.Utils;
 
 namespace UI.Controllers.SchoolSite
 {
@@ -40,6 +41,7 @@ namespace UI.Controllers.SchoolSite
 
 
         [HttpPost]
+        [Authorize(Roles = CustomRoles.Admin)]
         public ActionResult Create(ScheduleViewModel model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
@@ -53,6 +55,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpGet]
+        [Authorize(Roles = CustomRoles.Manager)]
         public ActionResult Edit(int id)
         {
             var schedule = scheduleService.GetSchedule(id);
@@ -72,6 +75,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpPost]
+        [Authorize(Roles = CustomRoles.Manager)]
         public ActionResult Delete(int id)
         {
             var filePath = Server.MapPath("~/Content/img/" + scheduleService.GetSchedule(id));

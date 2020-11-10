@@ -158,7 +158,7 @@ namespace UI.Controllers
                     db.Userr.Add(new User { Password = model.Password, RoleId = 3 });
                     db.SaveChanges();
 
-                    user = db.Userr.Where(t => t.Name == model.Name && t.Password == model.Password).FirstOrDefault();
+                    user = db.Userr.Where(t => t.Email == model.Email && t.Password == model.Password).FirstOrDefault();
                 }
 
                 if (user != null)

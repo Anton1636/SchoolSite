@@ -229,9 +229,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011101641144_SchoolSite.cs" />
-    <Compile Include="Migrations\202011101641144_SchoolSite.Designer.cs">
-      <DependentUpon>202011101641144_SchoolSite.cs</DependentUpon>
+    <Compile Include="Migrations\202011101901286_SchoolSite.cs" />
+    <Compile Include="Migrations\202011101901286_SchoolSite.Designer.cs">
+      <DependentUpon>202011101901286_SchoolSite.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -354,8 +354,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011101641144_SchoolSite.resx">
-      <DependentUpon>202011101641144_SchoolSite.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011101901286_SchoolSite.resx">
+      <DependentUpon>202011101901286_SchoolSite.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

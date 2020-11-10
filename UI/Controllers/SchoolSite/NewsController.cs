@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UI.Models;
+using UI.Utils;
 
 namespace UI.Controllers
 {
@@ -45,6 +46,7 @@ namespace UI.Controllers
 
 
         [HttpPost]
+        [Authorize(Roles = CustomRoles.Admin)]
         public ActionResult Create(NewsViewModel model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
@@ -84,6 +86,7 @@ namespace UI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = CustomRoles.Manager)]
         public ActionResult Edit(int id)
         {
             var news = newsService.GetNews(id);
@@ -103,6 +106,7 @@ namespace UI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = CustomRoles.Manager)]
         public ActionResult Delete(int id)
         {
             var filePath = Server.MapPath("~/Content/img/" + newsService.GetNews(id).LinkImage);
