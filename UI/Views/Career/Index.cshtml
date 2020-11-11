@@ -4,36 +4,25 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @*@Html.DisplayNameFor(model => model.ImageLink)*@
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.ImageLink)*@
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@foreach (var item in Model)
+{
+    <div class="card-group">
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Name)</p>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Salary)</p>
+            </div>
+        </div>
+    </div>
+
+    <td>
+        <button type="button" class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</button>
+        <button type="button" class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
+    </td>
 }
 
-</table>
