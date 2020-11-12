@@ -4,24 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 @foreach (var item in Model)
 {
-    <div class="card-group">
-        <div class="card">
-            <img src="@Html.DisplayFor(modelItem => item.ImageLink)" class="card-img-top" width="250" height="250" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">@Html.DisplayFor(modelItem => item.FullName)</h5>
-                <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+    <div class="card" wight="500px">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row no-gutters">
+                <div class="col-md-4">
+                    <img src="@Html.DisplayFor(modelItem => item.ImageLink)" class="card-img" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.FullName)</h5>
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <td>
-        <button type="button" class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</button>
-        <button type="button" class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
-    </td>
 }

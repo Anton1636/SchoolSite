@@ -30,6 +30,7 @@ namespace UI.Controllers.SchoolSite
 
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult Index()
         {
             List<tblGallary> gallary = gallaryService.GetAllGallary().ToList();
@@ -46,7 +47,7 @@ namespace UI.Controllers.SchoolSite
 
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Admin)]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(GallaryViewModel model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
@@ -93,7 +94,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(GallaryViewModel model)
         {
             if (ModelState.IsValid)
@@ -106,7 +107,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id)
         {
             var filePath = Server.MapPath("~/Content/img/" + gallaryService.GetGallary(id).ImageLink);

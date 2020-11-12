@@ -10,22 +10,23 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                @Html.ActionLink("Best School Ever", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">@Html.ActionLink("Best School Ever", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">@Html.ActionLink("Career", "Index", "Career") <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="#">@Html.ActionLink("Gallary", "Index", "Gallary")</a>
+                <a class="nav-item nav-link" href="#">@Html.ActionLink("News", "Index", "News")</a>
+                <a class="nav-item nav-link" href="#">@Html.ActionLink("Schedule", "Index", "Schedule")</a>
+                <a class="nav-item nav-link" href="#">@Html.ActionLink("SchoolParty", "Index", "SchoolParty")</a>
+                <a class="nav-item nav-link" href="#">@Html.ActionLink("Teachers", "Index", "Teachers")</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li><a href="#"></a>@Html.ActionLink("Career", "Index", "Career")</li>
-                <li role="presentation"><a href="#"></a>@Html.ActionLink("Gallary", "Index", "Gallary")</li>
-                <li role="presentation"><a href="#"></a>@Html.ActionLink("News", "Index", "News")</li>
-                <li role="presentation"><a href="#"></a>@Html.ActionLink("Schedule", "Index", "Schedule")</li>
-                <li role="presentation"><a href="#"></a>@Html.ActionLink("SchoolParty", "Index", "SchoolParty")</li>
-                <li role="presentation"><a href="#"></a>@Html.ActionLink("Teachers", "Index", "Teachers")</li>
-            </ul>
             @Html.Partial("_LoginPartial")
         </div>
-</nav>
+    </nav>
 
     <div class="container body-content">
         @RenderBody()

@@ -26,6 +26,7 @@ namespace UI.Controllers.SchoolSite
 
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult Index()
         {
             List<tblSchedule> schedule = scheduleService.GetAllSchedule().ToList();
@@ -41,7 +42,7 @@ namespace UI.Controllers.SchoolSite
 
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Admin)]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(ScheduleViewModel model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
@@ -55,7 +56,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpGet]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
             var schedule = scheduleService.GetSchedule(id);
@@ -75,7 +76,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id)
         {
             var filePath = Server.MapPath("~/Content/img/" + scheduleService.GetSchedule(id));

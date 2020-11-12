@@ -25,6 +25,7 @@ namespace UI.Controllers.SchoolSite
 
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult Index()
         {
             List<tblCareer> career = careerService.GetAllCarrer();
@@ -41,7 +42,7 @@ namespace UI.Controllers.SchoolSite
 
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Admin)]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(NewsViewModel model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
@@ -64,7 +65,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(CareerViewModel model)
         {
             if (ModelState.IsValid)
@@ -77,7 +78,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id)
         {
             var filePath = Server.MapPath("~/Content/img/" + careerService.GetCarrer(id));

@@ -1,16 +1,29 @@
-﻿using System.Web.Mvc;
+﻿using DAL.Helpers;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.Mvc;
+using UI.Models;
 using UI.Utils;
 
 namespace UI.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize]
         public ActionResult Index()
         {
-            return View();
+            IList<string> roles = new List<string> { "The role is not defined" };
+            ApplicationUserManager userManager = HttpContext.GetOwinContext()
+                                                    .GetUserManager<ApplicationUserManager>();
+            ApplicationUser user = userManager.FindByEmail(User.Identity.Name);
+            if (user != null)
+                roles = userManager.GetRoles(user.Id);
+            return View(roles);
         }
 
-        [Authorize(Roles = CustomRoles.User)]
+        [Authorize(Roles = "admin")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -18,7 +31,7 @@ namespace UI.Controllers
             return View();
         }
 
-        [Authorize(Roles = CustomRoles.User)]
+       
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

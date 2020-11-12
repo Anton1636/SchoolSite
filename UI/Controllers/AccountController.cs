@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using DAL;
 using DAL.Entity;
+using DAL.Helpers;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -147,33 +148,21 @@ namespace UI.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                User user = null;
-
-                using (ApplicationContext db = new ApplicationContext())
+                var user = new ApplicationUser { UserName = model.Name, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
                 {
-                    db.Userr.Add(new User { Password = model.Password, RoleId = 3 });
-                    db.SaveChanges();
-
-                    user = db.Userr.Where(t => t.Email == model.Email && t.Password == model.Password).FirstOrDefault();
-                }
-
-                if (user != null)
-                {
-                    FormsAuthentication.SetAuthCookie(model.Name, true);
+                    await UserManager.AddToRoleAsync(user.Id, "user");
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     return RedirectToAction("Index", "Home");
                 }
+                AddErrors(result);
             }
-            else
-            {
-                ModelState.AddModelError("  ", "User with this nickname already exists");
-            }
-
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 

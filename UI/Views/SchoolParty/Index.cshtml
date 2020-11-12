@@ -4,10 +4,6 @@
     ViewBag.Title = "Index";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 @foreach (var item in Model)
 {
     <div class="card-group">
@@ -19,9 +15,4 @@
             </div>
         </div>
     </div>
-
-    <td>
-        <button type="button" class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = item.Id })</button>
-        <button type="button" class="btn btn-default">@Html.ActionLink("Delete", "Delete", new { id = item.Id })</button>
-    </td>
 }

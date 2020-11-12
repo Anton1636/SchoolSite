@@ -30,6 +30,7 @@ namespace UI.Controllers.SchoolSite
 
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult Index()
         {
             List<tblSchoolParty> sp = schoolPartyService.GetAllSchoolParty().ToList();
@@ -46,7 +47,7 @@ namespace UI.Controllers.SchoolSite
 
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Admin)]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(SchoolPartyViewModel model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
@@ -86,7 +87,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpGet]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
             var sp = schoolPartyService.GetSchoolParty(id);
@@ -106,7 +107,7 @@ namespace UI.Controllers.SchoolSite
         }
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id)
         {
             var filePath = Server.MapPath("~/Content/img/" + schoolPartyService.GetSchoolParty(id).ImageLink);

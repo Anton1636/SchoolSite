@@ -13,8 +13,6 @@ namespace DAL
         public DbSet<tblSchedule> Schedule { get; set; }
         public DbSet<tblSchoolParty> SchoolParty { get; set; }
         public DbSet<tblTeachers> Teachers { get; set; }
-        public DbSet<User> Userr { get; set; }
-        public DbSet<Role> Roless { get; set; }
 
         public ApplicationContext()
             : base("name=ConnectionString")

@@ -30,6 +30,7 @@ namespace UI.Controllers
 
         }
 
+        [Authorize(Roles = "user")]
         public ActionResult Index()
         {
             List<tblNews> news = newsService.GetAllNews().ToList();
@@ -46,7 +47,7 @@ namespace UI.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Admin)]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(NewsViewModel model, HttpPostedFileBase imageFile)
         {
             if (ModelState.IsValid)
@@ -86,7 +87,7 @@ namespace UI.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id)
         {
             var news = newsService.GetNews(id);
@@ -106,7 +107,7 @@ namespace UI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = CustomRoles.Manager)]
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id)
         {
             var filePath = Server.MapPath("~/Content/img/" + newsService.GetNews(id).LinkImage);

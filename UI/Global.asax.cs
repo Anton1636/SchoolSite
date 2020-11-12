@@ -1,3 +1,4 @@
+using DAL;
 using DAL.Initializer;
 using System.Data.Entity;
 using System.Web.Mvc;
@@ -10,7 +11,7 @@ namespace UI
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new SchoolSiteInitializer());
+            Database.SetInitializer<ApplicationContext>(new SchoolSiteInitializer());
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

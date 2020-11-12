@@ -1,4 +1,7 @@
 ﻿using DAL.Entity;
+using DAL.Helpers;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Data.Entity;
 
@@ -64,14 +67,6 @@ namespace DAL.Initializer
                 new tblTeachers { FullName = "John 'Edward' Sukharev", Description = "WESG 2017 Europe Finals; ESL One New York 2016; SLTV StarSeries IX;", ImageLink = "https://svirtus.cdnvideo.ru/T35Gk59v_4RVGdT1xdm4m7LzIEg=/0x0:226x245/200x200/filters:quality(100)/https://hb.bizmrg.com/esports-core-media/27/27a0bbd1b2cda0164a1da43593d38055.jpg?m=946fc4d57657c9bca49fb18ac9b78875"},
             };
 
-            //_context.Roless.Add(new Role { Id = 1, Name = "admin" });
-            //_context.Roless.Add(new Role { Id = 2, Name = "manager" });
-            //_context.Roless.Add(new Role { Id = 2, Name = "user" });
-
-            //_context.Userr.Add(new User { Id = 1, Name = "Ivan", Email = "ivan@mail.ru", Password = "Qwerty1.", RoleId = 1 });
-            //_context.Userr.Add(new User { Id = 2, Name = "Vlad", Email = "vlad@mail.ru", Password = "Qwerty1.", RoleId = 2 });
-            //_context.Userr.Add(new User { Id = 3, Name = "Bob", Email = "bob@mail.ru", Password = "Qwerty1.", ClassNumber = 11, RoleId = 3 });
-
             _context.Teachers.AddRange(teachers);
             _context.SchoolParty.AddRange(schoolParty);
             _context.Schedule.AddRange(schedule);
@@ -79,7 +74,26 @@ namespace DAL.Initializer
             _context.Gallary.AddRange(gallary);
             _context.Career.AddRange(careers);
 
-            //_context.SaveChanges();
+            
+            var userManager = new AppUserManager(new UserStore<IdentityUser>(_context));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
+
+            var role1 = new IdentityRole { Name = "admin" };
+            var role2 = new IdentityRole { Name = "user" };
+
+            roleManager.Create(role1);
+            roleManager.Create(role2);
+
+            var admin = new ApplicationUser { Email = "ivan3@gmail.com", UserName = "Ivan" };
+            string password = "Qwerty1.";
+            var result = userManager.Create(admin, password);
+
+            if (result.Succeeded)
+            {
+                userManager.AddToRole(admin.Id, role1.Name);
+                userManager.AddToRole(admin.Id, role2.Name);
+            }
+            _context.SaveChanges();
 
             base.Seed(_context);
         }
