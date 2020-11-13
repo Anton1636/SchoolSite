@@ -4,8 +4,6 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
-using UI.Models;
-using UI.Utils;
 
 namespace UI.Controllers
 {
@@ -15,8 +13,7 @@ namespace UI.Controllers
         public ActionResult Index()
         {
             IList<string> roles = new List<string> { "The role is not defined" };
-            ApplicationUserManager userManager = HttpContext.GetOwinContext()
-                                                    .GetUserManager<ApplicationUserManager>();
+            ApplicationUserManager userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
             ApplicationUser user = userManager.FindByEmail(User.Identity.Name);
             if (user != null)
                 roles = userManager.GetRoles(user.Id);

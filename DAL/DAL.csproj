@@ -180,13 +180,13 @@
   <ItemGroup>
     <Compile Include="Abstraction\IGenericRepository.cs" />
     <Compile Include="ApplicationContext.cs" />
-    <Compile Include="AppUserManage.cs" />
     <Compile Include="Entity\Career.cs" />
     <Compile Include="Entity\Gallary.cs" />
     <Compile Include="Entity\News.cs" />
     <Compile Include="Entity\Schedule.cs" />
     <Compile Include="Entity\SchoolParty.cs" />
     <Compile Include="Entity\Teachers.cs" />
+    <Compile Include="Helpers\IdentityConfig.cs" />
     <Compile Include="Helpers\IdentityModel.cs" />
     <Compile Include="Implementation\EFrepository.cs" />
     <Compile Include="Initializer\SchoolSiteInitializer.cs" />

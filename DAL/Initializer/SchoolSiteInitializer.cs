@@ -75,7 +75,7 @@ namespace DAL.Initializer
             _context.Career.AddRange(careers);
 
             
-            var userManager = new AppUserManager(new UserStore<IdentityUser>(_context));
+            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(_context));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(_context));
 
             var role1 = new IdentityRole { Name = "admin" };
